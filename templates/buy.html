@@ -1,0 +1,24 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Meesha</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h2>Checkout (Cash On Delivery)</h2>
+    <form action="/checkout/{{ product.id }}" method="POST">
+        <p><strong>Product:</strong> {{ product.title }}</p>
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+
+        <input type="text" name="customer_name" placeholder="Your Name" required><br>
+        <textarea name="address" placeholder="Delivery Address" required></textarea><br>
+        <input type="text" name="phone" placeholder="Phone Number" required><br>
+        <input type="hidden" name="payment_mode" value="COD">
+
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>
+```

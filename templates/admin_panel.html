@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Meesho</title>
+</head>
+<body>
+    <h1>Admin Panel - Upload Product</h1>
+
+    <form action="/admin_panel" method="POST" enctype="multipart/form-data">
+        <label>Title:</label><br>
+        <input type="text" name="title" required><br><br>
+
+        <label>Description:</label><br>
+        <textarea name="description" required></textarea><br><br>
+
+        <label>Price:</label><br>
+        <input type="number" name="price" required><br><br>
+
+        <label>Category:</label><br>
+        <input type="text" name="category" required><br><br>
+
+        <label>Image:</label><br>
+        <input type="file" name="image" accept="image/*" required><br><br>
+
+        <button type="submit">Upload Product</button>
+    </form>
+
+    <hr>
+    <h2>Uploaded Products</h2>
+    <ul>
+        {% for product in products %}
+        <li>
+            <strong>{{ product.title }}</strong> - ₹{{ product.price }} <br>
+            <img src="{{ url_for('static', filename=product.image_path.split('static/')[-1]) }}" width="150"><br>
+            {{ product.description }}
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }} - Product Detail</title>
+</head>
+<body style="background: linear-gradient(to right, #fceabb, #f8b500); font-family: sans-serif; padding: 20px;">
+
+    <h1>{{ product.name }}</h1>
+    <img src="{{ url_for('static', filename=product.image_path.replace('static/', '')) }}" alt="{{ product.name }}" width="300"><br><br>
+
+    <p>Price: ₹{{ product.price }}</p>
+    <p>Description: {{ product.description }}</p>
+
+    <h2>Buy Now (Cash on Delivery)</h2>
+    <form action="/place_order" method="POST">
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address" required></textarea><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <button type="submit">Place Order (COD)</button>
+    </form>
+
+</body>
+</html>

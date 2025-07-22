@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart</title>
+</head>
+<body style="background: linear-gradient(to right, #ffecd2, #fcb69f); font-family: sans-serif; padding: 20px;">
+
+    <h1>Your Shopping Cart</h1>
+
+    {% if products %}
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Remove</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>₹{{ product.price }}</td>
+                <td><a href="{{ url_for('remove_from_cart', product_id=product.id) }}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h3>Total: ₹{{ total }}</h3>
+        <a href="/">Continue Shopping</a>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a href="/">Shop Now</a>
+    {% endif %}
+
+</body>
+</html>
